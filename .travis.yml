@@ -11,11 +11,15 @@ script:
   - docker run -e CI=true ljubetz/docker-react npm run test
 
 deploy:
+  edge: true
   provider: elasticbeanstalk
-  region: "..."
-  app: "docker"
+  region: "us-east-2"
+  app: "docker-react"
   env: "Docker-env"
-  bucket_name: "..."
-  bucket_path: "docker"
+  bucket_name: "elasticbeanstalk-us-east-2-866583535358"
+  bucket_path: "docker-react"
   on:
     branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
